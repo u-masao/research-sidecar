@@ -21,12 +21,12 @@
 
 | コマンド | 説明 | 詳細 |
 | --- | --- | --- |
-| `make sidecar-setup` | **環境構築** | `uv sync` で依存関係をインストールし、`trials` ディレクトリ（Sidecar）をセットアップします。 |
-| `make sidecar-start` | **実験開始** | 新しい実験IDを発行し、ディレクトリと `spec.md` を作成します。<br>`make sidecar-start MSG="実験タイトル"` のようにメッセージを指定できます。 |
-| `make sidecar-run` | **実験実行** | `scripts/run_experiment.sh` を実行します。`spec.md` が存在しないと実行できません。 |
-| `make sidecar-close` | **実験終了** | 現在の実験サイクルを閉じ、結果をコミットします。<br>`make sidecar-close RESULT="結果サマリ"` と指定可能です。 |
-| `make sidecar-push` | **同期** | メインブランチと `experiments` ブランチ（Sidecar）、およびDVC管理データをPushします。 |
-| `make sidecar-pull` | **同期** | メインブランチと `experiments` ブランチ（Sidecar）、およびDVC管理データをPullします。 |
+| `make rs-setup` | **環境構築** | `uv sync` で依存関係をインストールし、`trials` ディレクトリ（Sidecar）をセットアップします。 |
+| `make rs-start` | **実験開始** | 新しい実験IDを発行し、ディレクトリと `spec.md` を作成します。<br>`make rs-start MSG="実験タイトル"` のようにメッセージを指定できます。 |
+| `make rs-run` | **実験実行** | `scripts/run_experiment.sh` を実行します。`spec.md` が存在しないと実行できません。 |
+| `make rs-close` | **実験終了** | 現在の実験サイクルを閉じ、結果をコミットします。<br>`make rs-close RESULT="結果サマリ"` と指定可能です。 |
+| `make rs-push` | **同期** | メインブランチと `experiments` ブランチ（Sidecar）、およびDVC管理データをPushします。 |
+| `make rs-pull` | **同期** | メインブランチと `experiments` ブランチ（Sidecar）、およびDVC管理データをPullします。 |
 
 ## エージェントの役割 (`AGENTS.md`より)
 

@@ -42,7 +42,7 @@
 *   `scripts/cycle.sh`
 *   `scripts/run_core.sh`
 *   `scripts/run_experiment.sh`
-*   `scripts/sidecar.mk`
+*   `scripts/rs.mk`
 *   `scripts/test_workflow.sh`（オプション: 動作確認用）
 
 ```bash
@@ -65,19 +65,19 @@ trials/
 
 ### 3. Makefile のマージ
 
-最も簡単な方法は、提供されている `scripts/sidecar.mk` を利用することです。
+最も簡単な方法は、提供されている `scripts/rs.mk` を利用することです。
 
-1. `scripts/sidecar.mk` をコピーします。
-2. 既存の `Makefile` の先頭に `include scripts/sidecar.mk` を追記します。もし `Makefile` がない場合は新規作成してください。
+1. `scripts/rs.mk` をコピーします。
+2. 既存の `Makefile` の先頭に `include scripts/rs.mk` を追記します。もし `Makefile` がない場合は新規作成してください。
 
 ```makefile
-include scripts/sidecar.mk
+include scripts/rs.mk
 
 .PHONY: clean help
 
 help:
 	@echo "Main Makefile Help:"
-	@$(MAKE) help-sidecar
+	@$(MAKE) help-rs
 ```
 
 ### 4. AGENTS.md の配置
@@ -107,7 +107,7 @@ cp results/scores.csv "$SIDECAR_DIR/$EXPERIMENT_ID/reports/"
 
 1.  セットアップとSidecarの初期化:
     ```bash
-    make sidecar-setup
+    make rs-setup
     ```
 
 2.  テストスクリプトの実行（`test_workflow.sh` をコピーした場合）:
@@ -116,24 +116,24 @@ cp results/scores.csv "$SIDECAR_DIR/$EXPERIMENT_ID/reports/"
     ```
     または手動で:
     ```bash
-    make sidecar-start MSG="Test Experiment"
-    make sidecar-run MSG="Initial Run"
-    make sidecar-close RESULT="success"
+    make rs-start MSG="Test Experiment"
+    make rs-run MSG="Initial Run"
+    make rs-close RESULT="success"
     ```
 
 ## 運用レシピ (Best Practices)
 
 ### 繰り返し実験を行う場合 (Iterative Experiments)
-同じ実験IDの中でパラメータを変えて試行錯誤する場合は、新しい実験を開始(`make sidecar-start`)するのではなく、`spec.md` を更新して `make sidecar-run` を繰り返してください。
+同じ実験IDの中でパラメータを変えて試行錯誤する場合は、新しい実験を開始(`make rs-start`)するのではなく、`spec.md` を更新して `make rs-run` を繰り返してください。
 
 1. **`spec.md` を更新**: 「パラメータを変更して再試行」などのメモを追記。
-2. **コード修正 & 実行**: `make sidecar-run MSG="Change param alpha"`。
+2. **コード修正 & 実行**: `make rs-run MSG="Change param alpha"`。
 3. **結果確認**: Sidecarに履歴が追記されます。
 
 ### 実験をキャンセルする場合
-`make sidecar-start` 直後に「やっぱりやめた」となった場合は、失敗としてクローズすればブランチごと削除され、きれいになります。
+`make rs-start` 直後に「やっぱりやめた」となった場合は、失敗としてクローズすればブランチごと削除され、きれいになります。
 
 ```bash
-make sidecar-close RESULT="discard"
+make rs-close RESULT="discard"
 ```
 これで実験用ブランチ (`exp/EXP-xxxx`) は削除され、Sidecar内のチケットもクローズされます（チケット自体はログとして残ります）。

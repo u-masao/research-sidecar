@@ -8,7 +8,7 @@
 プロジェクトをクローンした後、最初に一度だけ実行します。
 
 ```bash
-make sidecar-setup
+make rs-setup
 ```
 
 このコマンドは以下を行います：
@@ -24,11 +24,11 @@ make sidecar-setup
 新しい実験を開始する準備をします。
 
 ```bash
-make sidecar-start
+make rs-start
 ```
 または引数付きで：
 ```bash
-make sidecar-start MSG="improve_attention_mechanism"
+make rs-start MSG="improve_attention_mechanism"
 ```
 
 これにより、スクリプト（`scripts/cycle.sh`）が実行され、以下が行われます：
@@ -52,7 +52,7 @@ make sidecar-start MSG="improve_attention_mechanism"
 実験を実行します。
 
 ```bash
-make sidecar-run
+make rs-run
 ```
 
 *   `run_experiment.py` が呼び出され、実験スクリプトが実行されます。
@@ -70,12 +70,12 @@ make sidecar-run
 実験サイクルを終了し、結果を保存します。
 
 ```bash
-make sidecar-close
-make sidecar-push
+make rs-close
+make rs-push
 ```
 
-*   **`make sidecar-close`**: 実験結果（`trials/` 内の変更）をコミットします。
-*   **`make sidecar-push`**: メインブランチと実験ブランチ（experiments）の両方をリモートリポジトリにプッシュします。
+*   **`make rs-close`**: 実験結果（`trials/` 内の変更）をコミットします。
+*   **`make rs-push`**: メインブランチと実験ブランチ（experiments）の両方をリモートリポジトリにプッシュします。
 
 ## 3. その他のコマンド
 
