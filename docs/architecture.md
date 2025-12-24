@@ -27,7 +27,7 @@
 │   ├── install.sh          # 自動セットアップ
 │   ├── run_experiment.sh   # 個別実験実行ラッパー
 │   ├── run_core.sh         # 実験実行のコアロジック (ユーザー定義)
-│   ├── sidecar.mk          # 共通Makefileターゲット
+│   ├── rs.mk               # 共通Makefileターゲット
 │   └── test_workflow.sh    # 動作検証用テストスイート
 ├── docs/                   # ドキュメント
 ├── Makefile                # コマンドインターフェース
@@ -38,7 +38,7 @@
 
 ### 2.2. 実験用ワークツリー (Trials / Sidecar)
 
-`make sidecar-start` などを実行すると、`trials/` ディレクトリに実験専用の環境が作成されます。これは Git Worktree 機能を使用して作成された、独立したブランチ（`experiments` branch）のチェックアウトです。
+`make rs-start` などを実行すると、`trials/` ディレクトリに実験専用の環境が作成されます。これは Git Worktree 機能を使用して作成された、独立したブランチ（`experiments` branch）のチェックアウトです。
 
 ```text
 trials/ (Git Worktree: experiments branch)

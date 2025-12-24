@@ -10,10 +10,10 @@
 
 2.  **「仕様書ファースト」ワークフローの徹底:**
     *   実験ディレクトリ（`trials/{experiment_id}/spec.md`）に `spec.md`（仕様書/意図）ファイルがない状態で、実験コードを書かないでください。
-    *   新しい実験を開始する際は、まず `make sidecar-start` を実行し、生成された `ticket.md` を確認し、`spec.md` を作成して背景、仮説、手法を記述するのを支援してください。
+    *   新しい実験を開始する際は、まず `make rs-start` を実行し、生成された `ticket.md` を確認し、`spec.md` を作成して背景、仮説、手法を記述するのを支援してください。
 
 3.  **「振り返り」インタビューのトリガー:**
-    *   **いつ:** 実験実行（`make sidecar-run`）が完了した時。
+    *   **いつ:** 実験実行（`make rs-run`）が完了した時。
     *   **アクション:**
         1.  `trials/{experiment_id}/reflection.md` を開きます。
         2.  `trials/{experiment_id}/reports/metrics.json` を読み、`reflection.md` の "Quick Check" セクションを記入します。
@@ -39,7 +39,7 @@ trials/ (Git Worktree: experiments branch)
 
 ## インタラクション・ルール
 
-*   **新しい実験を作成する際:** `make sidecar-start` (または `make sidecar-start MSG="message"`) を使用して実験環境をセットアップしてください。その後、生成された `spec.md` の記述を支援してください。
-*   **実験を実行する際:** `make sidecar-run` を使用してください。
-*   **実験を終了・保存する際:** `make sidecar-close` および `make sidecar-push` を使用してください。
+*   **新しい実験を作成する際:** `make rs-start` (または `make rs-start MSG="message"`) を使用して実験環境をセットアップしてください。その後、生成された `spec.md` の記述を支援してください。
+*   **実験を実行する際:** `make rs-run` を使用してください。
+*   **実験を終了・保存する際:** `make rs-close` および `make rs-push` を使用してください。
 *   **結果を分析する際:** `metrics.json` を読み、統計を要約し、ユーザーの解釈を求めて `reflection.md` に反映させてください。
