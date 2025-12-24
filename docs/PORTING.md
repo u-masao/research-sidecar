@@ -26,7 +26,7 @@
 手動での移植が面倒な場合は、以下のコマンド（One-liner）を実行することで、必要なファイルのダウンロードと設定を自動で行えます。
 
 ```bash
-/bin/bash -c "$(curl -fsSL https://raw.githubusercontent.com/u-masao/research-workflow-automation-trial/main/scripts/install.sh)"
+/bin/bash -c "$(curl -fsSL https://raw.githubusercontent.com/u-masao/research-sidecar/main/scripts/install.sh)"
 ```
 
 インストール後、**`scripts/run_core.sh` のカスタマイズ**（後述の手順5相当）のみ手動で行ってください。
