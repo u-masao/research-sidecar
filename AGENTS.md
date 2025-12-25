@@ -29,7 +29,7 @@
 
 ```text
 trials/ (Git Worktree: experiments branch)
-  ├── {experiment_id}/          # e.g., EXP-241223-xxxx
+  ├── {experiment_id}/          # e.g., EXP-20251225-093730-479574903-xxxx
   │   ├── ticket.md             # <--- アンカー (実験ステータスとログ)
   │   ├── spec.md               # <--- 実験計画 (ユーザーが作成)
   │   └── reports/

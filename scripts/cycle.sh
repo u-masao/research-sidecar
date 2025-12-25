@@ -6,7 +6,7 @@ ID_FILE=".current_exp"
 
 # ID生成 (日付+ランダム)
 generate_id() {
-    echo "EXP-$(date +%y%m%d)-$(awk -v seed=$RANDOM 'BEGIN {srand(seed); for(i=0;i<6;i++) printf "%x", int(rand()*16)}')"
+    echo "EXP-$(date +%Y%m%d-%H%M%S-%N)-$(awk -v seed=$RANDOM 'BEGIN {srand(seed); for(i=0;i<4;i++) printf "%x", int(rand()*16)}')"
 }
 
 COMMAND=$1
