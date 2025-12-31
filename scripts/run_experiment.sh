@@ -3,9 +3,31 @@ set -e
 export SIDECAR_DIR="trials"
 ID_FILE=".current_exp"
 
+# ヘルプ表示関数
+usage() {
+    echo "使用方法: $0 [message]"
+    echo ""
+    echo "説明:"
+    echo "  現在進行中の実験を実行します。"
+    echo "  内部で DVC (dvc repro) を呼び出し、結果を Sidecar ディレクトリに保存します。"
+    echo ""
+    echo "引数:"
+    echo "  message: 実行時のコミットメッセージ（任意）"
+    echo ""
+    echo "例:"
+    echo "  $0 \"Adjusted hyperparameters\""
+    exit 1
+}
+
+# ヘルプチェック
+if [ "$1" == "-h" ] || [ "$1" == "--help" ]; then
+    usage
+fi
+
 # 0. 変更チェック
 if [ -n "$(git status --porcelain)" ]; then
-    echo "❌ リポジトリに変更があります。実験を実行する前にコミットしてください。"
+    echo "❌ エラー: リポジトリに変更があります。実験を実行する前にコミットしてください。"
+    echo "   (git add . && git commit -m '...')"
     exit 1
 fi
 
@@ -13,7 +35,7 @@ fi
 if [ -f "$ID_FILE" ]; then
     export EXPERIMENT_ID=$(cat "$ID_FILE")
 else
-    echo "❌ 実行中の実験が見つかりません。先に 'make start' を実行してください。"
+    echo "❌ エラー: 実行中の実験が見つかりません。先に 'make rs-start' を実行してください。"
     exit 1
 fi
 
@@ -44,3 +66,4 @@ TICKET="$SIDECAR_DIR/$EXPERIMENT_ID/ticket.md"
 
 echo "- **Run:** \`$HASH\` (Msg: $1)" >> "$TICKET"
 cd "$SIDECAR_DIR" && git add . && git commit -m "Run record $EXPERIMENT_ID"
+echo "✅ 実験 $EXPERIMENT_ID の実行記録を保存しました。"

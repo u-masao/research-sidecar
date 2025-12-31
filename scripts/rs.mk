@@ -5,10 +5,18 @@ help-rs:
 	@echo "使用方法 (Research Sidecar):"
 	@echo "  make rs-setup   - 環境構築 (uv install, Research Sidecar setup)"
 	@echo "  make rs-start   - 実験開始 (./scripts/cycle.sh start)"
+	@echo "                  * 必須: MSG=\"実験タイトル\""
 	@echo "  make rs-run     - 実験実行 & 記録 (./scripts/run_experiment.sh)"
+	@echo "                  * 任意: MSG=\"コミットメッセージ\""
 	@echo "  make rs-close   - 実験終了 (./scripts/cycle.sh close)"
+	@echo "                  * 必須: RESULT={success|fail|discard}"
 	@echo "  make rs-push    - 全ブッシュ (Code + Research Sidecar)"
 	@echo "  make rs-pull    - 全プル (Code + Research Sidecar)"
+	@echo ""
+	@echo "例:"
+	@echo "  make rs-start MSG=\"Base Model Evaluation\""
+	@echo "  make rs-run MSG=\"Changed learning rate\""
+	@echo "  make rs-close RESULT=success"
 	@echo ""
 
 rs-setup:
@@ -32,12 +40,22 @@ rs-setup:
 	@echo "✅ Research Sidecar セットアップ完了"
 
 rs-start:
+	@if [ -z "$(MSG)" ]; then \
+		echo "❌ エラー: MSG (実験タイトル) が指定されていません。"; \
+		echo "👉 例: make rs-start MSG=\"Base Model Evaluation\""; \
+		exit 1; \
+	fi
 	./scripts/cycle.sh start "$(MSG)"
 
 rs-run:
 	./scripts/run_experiment.sh "$(MSG)"
 
 rs-close:
+	@if [ -z "$(RESULT)" ]; then \
+		echo "❌ エラー: RESULT (結果ステータス) が指定されていません。"; \
+		echo "👉 例: make rs-close RESULT=success"; \
+		exit 1; \
+	fi
 	./scripts/cycle.sh close "$(RESULT)"
 
 rs-push:
