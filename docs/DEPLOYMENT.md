@@ -33,7 +33,7 @@ git merge research-sidecar/main
 git switch rs-release
 
 # 必要なディレクトリ/ファイルを main から取得
-git checkout main -- AGENTS.md scripts docs
+git checkout main -- AGENTS.md scripts docs Makefile
 
 # 差分を確認
 git status
@@ -59,7 +59,7 @@ git commit -m "feat(scripts): update workflow scripts"
 `rs-release` ブランチの内容を、`research-sidecar` の `main` ブランチとしてプッシュします。
 
 ```bash
-git push research-sidecar rs-release:main
+make deploy-sidecar
 ```
 
 ## 注意事項
