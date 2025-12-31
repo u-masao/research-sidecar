@@ -42,7 +42,7 @@
 
 ```text
 trials/ (Git Worktree: experiments branch)
-  ├── 2024-01-01_12-00-00_feat_xxx/  # 実験ID（タイムスタンプ + ブランチ名等）
+  ├── EXP-20241231-234501-1234-1c2b/  # 実験ID（タイムスタンプ + ブランチ名等）
   │   ├── spec.md                    # 実験仕様書
   │   ├── reflection.md              # 振り返り
   │   ├── snapshot/                  # 実行時のコードスナップショット (DVC管理)

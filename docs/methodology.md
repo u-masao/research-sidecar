@@ -33,7 +33,7 @@ make rs-start MSG="improve_attention_mechanism"
 
 これにより、スクリプト（`scripts/cycle.sh`）が実行され、以下が行われます：
 *   ソースコードの変更がある場合、自動的にコミットされます。
-*   `trials/` 以下に新しい実験IDを持つディレクトリ（例: `trials/2024-01-01_10-00-00_feat_xxx/`）が作成されます。
+*   `trials/` 以下に新しい実験IDを持つディレクトリ（例: `trials/EXP-20241231-234501-1234-1c2b/`）が作成されます。
 *   そのディレクトリ内にテンプレートから `spec.md` が生成されます。
 
 ### Step 2: 仕様の記述 (Specify)
